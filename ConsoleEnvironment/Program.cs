@@ -10,6 +10,7 @@ var sorting = new ISorting<int>[]
     new BubbleSorting<int>(IsGreaterInt),
     new InsertionSorting<int>(IsGreaterInt),
     new SelectionSorting<int>(IsGreaterInt),
+    new ShakerSorting<int>(IsGreaterInt)
 }.ChooseOne();
 
 var settingsFilePath = args.Length >= 1 ? args[0] : "./appsettings.json"; 

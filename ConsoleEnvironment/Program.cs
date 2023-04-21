@@ -18,15 +18,17 @@ var settings = Settings.Open(new FileInfo(settingsFilePath));
 
 var randomArray = Generator.GenerateArray(
     settings.LengthRange ?? new MyRange(20, 100),
-    rnd => rnd.Next(settings.NumberRange?.Min ?? -100, settings.NumberRange?.Max ?? 100)
+    rnd => rnd.Next(settings.NumberRange?.Min ?? -100, settings.NumberRange?.Max ?? 101)
 );
-
+Console.ReadLine();
 randomArray.WriteTo(Console.Out);
 
 var sortedArray = sorting.Run(randomArray);
 sortedArray.WriteTo(Console.Out);
 
-await new RestClient(settings).PostResult(new SortingResult()
+using var client = new RestClient(settings);
+
+await client.PostResult(new SortingResult
 {
     RandomArray = randomArray.ToArray(),
     SortedArray = sortedArray.ToArray()

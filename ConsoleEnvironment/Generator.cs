@@ -4,7 +4,7 @@ namespace ConsoleEnvironment;
 
 public static class Generator
 {
-    public static IList<T> GenerateArray<T>(MyRange lengthRange, Func<Random, T> producer)
+    public static IList<T> GenerateList<T>(MyRange lengthRange, Func<Random, T> producer)
     {
         var result = new List<T>();
         var random = new Random();

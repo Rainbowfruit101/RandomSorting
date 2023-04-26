@@ -16,8 +16,8 @@ var sorting = new ISorting<int>[]
 var settingsFilePath = args.Length >= 1 ? args[0] : "./appsettings.json"; 
 var settings = Settings.Open(new FileInfo(settingsFilePath));
 
-var randomArray = Generator.GenerateArray(
-    settings.LengthRange ?? new MyRange(20, 100),
+var randomArray = Generator.GenerateList(
+    settings.LengthRange ?? new MyRange(20, 101),
     rnd => rnd.Next(settings.NumberRange?.Min ?? -100, settings.NumberRange?.Max ?? 101)
 );
 Console.ReadLine();
